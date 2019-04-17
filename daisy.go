@@ -16,7 +16,7 @@ func Now() *Daisy {
 	return New(time.Now()).BeginningOfDay()
 }
 
-func (daisy *Daisy) Tommorrow() *Daisy {
+func (daisy *Daisy) Tomorrow() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, 1))
 }
 
