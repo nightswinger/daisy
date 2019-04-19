@@ -86,6 +86,11 @@ func (daisy *Daisy) BeginningOfMonth() *Daisy {
 	return New(time.Date(y, m, 1, 0, 0, 0, 0, daisy.Location()))
 }
 
+func (daisy *Daisy) BeginningOfYear() *Daisy {
+	y, _, _ := daisy.Date()
+	return New(time.Date(y, 1, 1, 0, 0, 0, 0, daisy.Location()))
+}
+
 func (daisy *Daisy) EndOfHour() *Daisy {
 	return New(daisy.BeginningOfHour().Time.Add(time.Hour - time.Nanosecond))
 }
@@ -117,6 +122,10 @@ func BeginningOfWeek() *Daisy {
 
 func BeginningOfMonth() *Daisy {
 	return New(time.Now()).BeginningOfMonth()
+}
+
+func BeginningOfYear() *Daisy {
+	return New(time.Now()).BeginningOfYear()
 }
 
 func (daisy *Daisy) AsTime() time.Time {
