@@ -16,6 +16,14 @@ func Now() *Daisy {
 	return New(time.Now()).BeginningOfDay()
 }
 
+func (daisy *Daisy) AddHours(i int) *Daisy {
+	return New(daisy.Time.Add(time.Duration(i) * time.Hour))
+}
+
+func (daisy *Daisy) AddDays(i int) *Daisy {
+	return New(daisy.Time.AddDate(0, 0, i))
+}
+
 func (daisy *Daisy) Tomorrow() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, 1))
 }
