@@ -16,6 +16,22 @@ func Now() *Daisy {
 	return New(time.Now())
 }
 
+func Parse(layout, value string) (*Daisy, error) {
+	t, err := time.Parse(layout, value)
+	if err != nil {
+		return nil, err
+	}
+	return New(t), err
+}
+
+func MustParse(layout, value string) *Daisy {
+	t, err := time.Parse(layout, value)
+	if err != nil {
+		panic(err)
+	}
+	return New(t)
+}
+
 func (daisy *Daisy) AddHours(i int) *Daisy {
 	return New(daisy.Time.Add(time.Duration(i) * time.Hour))
 }
@@ -52,12 +68,12 @@ func (daisy *Daisy) PrevWeek() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, -7))
 }
 
-func (daisy *Daisy) RFC3339() string {
-	return daisy.Time.Format(time.RFC3339)
-}
-
 func (daisy *Daisy) NextWeek() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, 7))
+}
+
+func (daisy *Daisy) RFC3339() string {
+	return daisy.Time.Format(time.RFC3339)
 }
 
 func (daisy *Daisy) BeginningOfHour() *Daisy {
