@@ -13,7 +13,7 @@ func New(t time.Time) *Daisy {
 }
 
 func Now() *Daisy {
-	return New(time.Now()).BeginningOfDay()
+	return New(time.Now())
 }
 
 func (daisy *Daisy) AddHours(i int) *Daisy {
@@ -50,6 +50,10 @@ func (daisy *Daisy) NextMonth() *Daisy {
 
 func (daisy *Daisy) PrevWeek() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, -7))
+}
+
+func (daisy *Daisy) RFC3339() string {
+	return daisy.Time.Format(time.RFC3339)
 }
 
 func (daisy *Daisy) NextWeek() *Daisy {
