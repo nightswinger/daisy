@@ -16,6 +16,10 @@ func Now() *Daisy {
 	return New(time.Now())
 }
 
+func Unix(sec int64) *Daisy {
+	return New(time.Unix(sec, 0))
+}
+
 func Parse(layout, value string) (*Daisy, error) {
 	t, err := time.Parse(layout, value)
 	if err != nil {
