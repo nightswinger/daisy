@@ -76,6 +76,10 @@ func (daisy *Daisy) NextWeek() *Daisy {
 	return New(daisy.Time.AddDate(0, 0, 7))
 }
 
+func (daisy *Daisy) Unix() int64 {
+	return daisy.Time.Unix()
+}
+
 func (daisy *Daisy) RFC3339() string {
 	return daisy.Time.Format(time.RFC3339)
 }
